@@ -1,9 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import DogFilter from "./DogFilter";
-import RouteList from "./RouteList";
 
 const TEST_DOGS = [
   {
@@ -38,26 +36,22 @@ const TEST_DOGS = [
   },
 ];
 
-// jest.mock('react-router-dom', () => ({
-//     ...jest.requireActual('react-router-dom'),
-//     useParams: () => ({ name: "burrito"}),
-//   }))
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    useParams: () => ({ name: "whiskey" })
+  };
+});
 
-describe("dogFilter component", function () {
+describe("DogFilter component", function () {
   it("renders without crashing", function () {
-    render(
-      <MemoryRouter initialEntries={["/dogs/whiskey"]}>
-        <RouteList dogs={TEST_DOGS}></RouteList>
-      </MemoryRouter>
-    );
+    render(<DogFilter dogs={TEST_DOGS} />);
   });
 
   it("contains correct dog info", function () {
-    const result = render(
-      <MemoryRouter initialEntries={["/dogs/whiskey"]}>
-        <RouteList dogs={TEST_DOGS}></RouteList>
-      </MemoryRouter>
-    );
+    const result = render(<DogFilter dogs={TEST_DOGS} />);
+
     expect(result.queryByText("Whiskey")).toBeInTheDocument();
     expect(result.queryByText("Age: 5")).toBeInTheDocument();
     expect(

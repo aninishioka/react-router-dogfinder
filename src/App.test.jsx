@@ -1,6 +1,6 @@
 import React from "react";
 import { render, waitFor } from "@testing-library/react";
-import { MemoryRouter, Router } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import {describe, it, expect } from "vitest";
 
@@ -8,11 +8,11 @@ import App from "./App";
 
 describe("dogfinder app", function () {
   it("renders without crashing", function () {
-    render(<MemoryRouter><App /></MemoryRouter>);
+    render(<App />);
   });
 
   it("contains loading", function () {
-    const result = render(<MemoryRouter><App /></MemoryRouter>);
+    const result = render(<App />);
     expect(result.queryByText("Loading...")).toBeInTheDocument();
   });
 
