@@ -1,18 +1,29 @@
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import "./DogList.css";
 
-/** Renders
+
+/**DogList component that displays all dogs
  *
-
- */
+ * Props:
+ * - dogs: array of dog objects [{ name, age, src, facts }, ...]
+ *
+ * App -> RouteList -> DogList
+*/
 
 function DogList({ dogs }) {
   return (
-    <div>
+    <div className="DogList">
       {dogs.map((dog) => (
-        <div key={uuid()}>
-          <img src={`../${dog.src}.jpg`} alt={`${dog.name}`} />
-          <Link to={`${dog.name}`}>{dog.name}</Link>
+        <div className="DogList-dog" key={uuid()}>
+          <img
+            className="DogList-image"
+            src={`../${dog.src}.jpg`}
+            alt={`${dog.name}`} />
+          <br/>
+          <Link
+          className="DogList-link"
+          to={`${dog.name.toLowerCase()}`}>{dog.name}</Link>
         </div>
       ))}
     </div>

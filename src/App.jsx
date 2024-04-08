@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 import RouteList from "./RouteList";
 import { BrowserRouter } from "react-router-dom";
 
+
 const DOGS_API_URL = "http://localhost:5001/dogs";
 
 /** Component for entire app.

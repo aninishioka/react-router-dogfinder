@@ -23,7 +23,7 @@ function NavBar({ dogNames }) {
         dogNames.map(name =>
           <NavLink
             key={uuid()}
-            to={`/dogs/${name}`}>{name}</NavLink>
+            to={`/dogs/${name.toLowerCase()}`}>{name}</NavLink>
         )
       }
     </nav>
