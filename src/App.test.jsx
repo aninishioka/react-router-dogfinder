@@ -1,10 +1,29 @@
-import Router from "react-router";
-Router.useParams = jest.fn();
-import DogDetails from './DogDetails';
+import React from "react";
+import { render, waitFor } from "@testing-library/react";
+import { MemoryRouter, Router } from 'react-router-dom';
 
-import { render, screen, waitFor } from '@testing-library/react';
+import {describe, it, expect } from "vitest";
 
-test('renders learn react link', () => {
-  Router.useParams.mockReturnValue({a: "b"});
-  render(<DogDetails />)
+import App from "./App";
+
+describe("dogfinder app", function () {
+  it("renders without crashing", function () {
+    render(<MemoryRouter><App /></MemoryRouter>);
+  });
+
+  it("contains loading", function () {
+    const result = render(<MemoryRouter><App /></MemoryRouter>);
+    expect(result.queryByText("Loading...")).toBeInTheDocument();
+  });
+
+  it("contains DogList", async function () {
+    const result = render(<App />);
+    await waitFor(() => expect(result.container.querySelector(".DogList")).toBeInTheDocument());
+  });
+
+  it("contains nav", async function () {
+    const result = render(<App />);
+    await waitFor(() => expect(result.container.querySelector(".NavBar")).toBeInTheDocument());
+  });
+
 });
