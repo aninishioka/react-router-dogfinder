@@ -18,7 +18,7 @@ function DogList({ dogs }) {
         <div className="DogList-dog" key={uuid()}>
           <img
             className="DogList-image"
-            src={`../${dog.src}.jpg`}
+            src={`/${dog.src}.jpg`}
             alt={`${dog.name}`} />
           <br/>
           <Link

@@ -18,7 +18,7 @@ function NavBar({ dogNames }) {
   return (
     <nav className="NavBar">
       <NavLink
-      to="/dogs/" end>Home</NavLink>
+      to="/dogs" end>Home</NavLink>
       {
         dogNames.map(name =>
           <NavLink

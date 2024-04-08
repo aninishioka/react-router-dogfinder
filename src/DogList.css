@@ -14,7 +14,7 @@
 
 .DogList-image {
   width: 300px;
-  height: 350px;
+  height: auto;
 }
 
 .DogList-link {

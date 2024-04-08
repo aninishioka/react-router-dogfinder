@@ -3,7 +3,8 @@
 }
 
 .DogDetails-image {
-  width: 45%;
+  width: 600px;
+  height: auto;
 }
 
 .DogDetails-facts {
@@ -13,10 +14,4 @@
 
 .DogDetails-facts li {
   font-size: 18px;
-}
-
-.DogDetails-404 {
-  font-size: 40px;
-  font-weight: bold;
-  color: rgb(27, 3, 3);
 }
