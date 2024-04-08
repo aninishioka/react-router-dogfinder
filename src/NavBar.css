@@ -1,5 +1,5 @@
 .NavBar {
-  background-color: tomato;
+  background-color: rgb(175, 27, 209);
   text-align: center;
   font-weight: bold;
 }
@@ -12,12 +12,6 @@
   text-decoration: none;
 }
 
-.NavBar a:hover {
-  background-color: black;
-  color: white !important;
-}
-
 .NavBar a.active {
-  font-weight: bold;
   color: black;
 }

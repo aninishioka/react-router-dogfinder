@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 import "./NavBar.css";
 
 
-/** Navigation for dogFinder site.
+/** Navigation bar component for dogFinder site.
  *
  * Props:
  * - dogNames: array like [dogName...]
@@ -13,15 +14,18 @@ import "./NavBar.css";
  * App -> NavBar
  */
 
-function NavBar({dogNames}) {
+function NavBar({ dogNames }) {
   return (
     <nav className="NavBar">
-      <Link to="/dogs"> Home </Link>
-        {
-            dogNames.map(d =>
-                <Link key={d} to={`/dogs/${d}`}> {d} </Link>
-            )
-        }
+      <NavLink
+      to="/dogs/" end>Home</NavLink>
+      {
+        dogNames.map(name =>
+          <NavLink
+            key={uuid()}
+            to={`/dogs/${name}`}>{name}</NavLink>
+        )
+      }
     </nav>
   );
 }

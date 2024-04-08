@@ -12,7 +12,7 @@ const DOGS_API_URL = "http://localhost:5001/dogs";
  *
  * State:
  * - dogsLoaded: boolean
- * - dogs: array of objects like [{name, src, }]
+ * - dogs: array of dog objects like [{name, src, }]
  *
  * App -> {NavBar, RouteList}
  */
@@ -21,6 +21,7 @@ function App() {
   const [dogsLoaded, setDogsLoaded] = useState(false);
   const [dogs, setDogs] = useState(getDogs);
 
+  /** makes request to DOGS_API and sets state of dogs and dogsLoaded */
   async function getDogs() {
     const resp = await fetch(DOGS_API_URL);
     const data = await resp.json();
@@ -33,7 +34,7 @@ function App() {
       <BrowserRouter>
         {dogsLoaded ? (
           <div>
-            <NavBar dogNames={dogs.map(d => d.name)} />
+            <NavBar dogNames={dogs.map(dog => dog.name)} />
             <RouteList dogs={dogs} />
           </div>
         ) : (
